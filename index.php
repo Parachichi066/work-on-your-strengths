@@ -29,75 +29,80 @@
                 </form>
             </section>
             <section>
-                <h2>Your Selected Strengths</h2>
+                <h2>Your Selected Strength</h2>
                     <div id="selected-strengths">
                         <?php
                         include 'connection.php';
 
-                        if (isset($_POST['Grow Seed'])) {
+                        $strength = "";
+
+                        if (isset($_POST['strengths'])) {
                             $strength = $_POST['strengths'];
-                            if ($strength == "unknown") {
-                                echo '
-                                <form method="post" action="">
-                                    <fieldset>
-                                        <legend>1. What activity excites you most?</legend>
-                                        <label><input type="radio" name="q1" value="leadership"> Guiding a team</label><br>
-                                        <label><input type="radio" name="q1" value="discipline"> Sticking to a routine</label><br>
-                                        <label><input type="radio" name="q1" value="communication"> Talking with people</label><br>
-                                        <label><input type="radio" name="q1" value="creativity"> Inventing new ideas</label><br>
-                                    </fieldset>
+                        }
 
-                                    <fieldset>
-                                        <legend>2. Which feedback feels best?</legend>
-                                        <label><input type="radio" name="q2" value="leadership"> “You inspire others!”</label><br>
-                                        <label><input type="radio" name="q2" value="discipline"> “You’re so reliable!”</label><br>
-                                        <label><input type="radio" name="q2" value="communication"> “You explain things clearly!”</label><br>
-                                        <label><input type="radio" name="q2" value="creativity"> “You’re so imaginative!”</label><br>
-                                    </fieldset>
+                        if (isset($_POST['quiz'])) {
+                            $scoreCreativity = 0;
+                            $scoreCommunication = 0;
+                            $scoreDiscipline = 0;
+                            $scoreLeadership = 0;
 
-                                    <fieldset>
-                                        <legend>3. What do you enjoy more?</legend>
-                                        <label><input type="radio" name="q3" value="leadership"> Taking charge in a group</label><br>
-                                        <label><input type="radio" name="q3" value="discipline"> Completing tasks step by step</label><br>
-                                        <label><input type="radio" name="q3" value="communication"> Helping others understand</label><br>
-                                        <label><input type="radio" name="q3" value="creativity"> Brainstorming new ideas</label><br>
-                                    </fieldset>
+                            foreach ($_POST as $key => $answer) {
+                                if ($answer === "creativity") $scoreCreativity++;
+                                if ($answer === "communication") $scoreCommunication++;
+                                if ($answer === "discipline") $scoreDiscipline++;
+                                if ($answer === "leadership") $scoreLeadership++;
+                            }
 
-                                    <button type="submit" value="quiz">See My Strength</button>
-                                </form>';
-                                if (isset($_POST['quiz'])) {
-                                    $scoreCreativity = 0;
-                                    $scoreCommunication = 0;
-                                    $scoreDiscipline = 0;
-                                    $scoreLeadership = 0;
+                            $maxScore = max($scoreCreativity, $scoreCommunication, $scoreDiscipline, $scoreLeadership);
 
-                                    foreach ($_POST as $answer) {
-                                        if ($answer === "creativity") $scoreCreativity++;
-                                        if ($answer === "communication") $scoreCommunication++;
-                                        if ($answer === "discipline") $scoreDiscipline++;
-                                        if ($answer === "leadership") $scoreLeadership++;
-                                    }
-
-                                    $maxScore = max($scoreCreativity, $scoreCommunication, $scoreDiscipline, $scoreLeadership);
-
-                                    if ($maxScore === $scoreCreativity) {
-                                        echo "<h2>Your strength to grow: Creativity 🌱</h2>";
-                                        $strength = "Creativity";
-                                    } elseif ($maxScore === $scoreCommunication) {
-                                        echo "<h2>Your strength to grow: Communication 🗣️</h2>";
-                                        $strength = "Communication";
-                                    } elseif ($maxScore === $scoreDiscipline) {
-                                        echo "<h2>Your strength to grow: Discipline 💪</h2>";
-                                        $strength = "Discipline";
-                                    } else {
-                                        echo "<h2>Your strength to grow: Leadership 👑</h2>";
-                                        $strength = "Leadership";
-                                    }
-                                }
+                            if ($maxScore === $scoreCreativity) {
+                                $strength = "Creativity";
+                            } elseif ($maxScore === $scoreCommunication) {
+                                $strength = "Communication";
+                            } elseif ($maxScore === $scoreDiscipline) {
+                                $strength = "Discipline";
                             } else {
-                            echo "<p>You want to grow <strong>" . htmlspecialchars($strength) . "</strong></p>";
-                            echo "<h3>Here is a task:</h3>";
+                                $strength = "Leadership";
+                            }
+                        }
+
+                        if ($strength == "unknown") {
+                            echo '
+                            <p>Let\'s find out what you need!</p>
+                            <form method="post" action="">
+                                <fieldset>
+                                    <legend>1. What activity excites you most?</legend>
+                                    <label><input type="radio" name="q1" value="leadership"> Guiding a team</label><br>
+                                    <label><input type="radio" name="q1" value="discipline"> Sticking to a routine</label><br>
+                                    <label><input type="radio" name="q1" value="communication"> Talking with people</label><br>
+                                    <label><input type="radio" name="q1" value="creativity"> Inventing new ideas</label><br>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>2. Which feedback feels best?</legend>
+                                    <label><input type="radio" name="q2" value="leadership"> “You inspire others!”</label><br>
+                                    <label><input type="radio" name="q2" value="discipline"> “You’re so reliable!”</label><br>
+                                    <label><input type="radio" name="q2" value="communication"> “You explain things clearly!”</label><br>
+                                    <label><input type="radio" name="q2" value="creativity"> “You’re so imaginative!”</label><br>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>3. What do you enjoy more?</legend>
+                                    <label><input type="radio" name="q3" value="leadership"> Taking charge in a group</label><br>
+                                    <label><input type="radio" name="q3" value="discipline"> Completing tasks step by step</label><br>
+                                    <label><input type="radio" name="q3" value="communication"> Helping others understand</label><br>
+                                    <label><input type="radio" name="q3" value="creativity"> Brainstorming new ideas</label><br>
+                                </fieldset>
+
+                                <button type="submit" name="quiz" value="quiz">See My Strength</button>
+                            </form>';
+
+                        } elseif ($strength) {
+                            echo "<p>You are growing: <strong>" . htmlspecialchars($strength) . "</strong></p>";
+                            
                             $id = rand(1, 10);
+                            $query = "";
+
                             if ($strength == "Leadership") {
                                 $query = "SELECT task FROM leadership WHERE id = $id";
                             } elseif ($strength == "Creativity") {
@@ -107,10 +112,18 @@
                             } elseif ($strength == "Communication") {
                                 $query = "SELECT task FROM communication WHERE id = $id";
                             } 
-                            $task = mysqli_fetch_assoc($conn->query($query))['task'];
-                            echo "<p>" . htmlspecialchars($task) . "</p>";
-                            };
+
+                            if ($query) {
+                                $result = $conn->query($query);
+                                if ($result && $result->num_rows > 0) {
+                                    $row = mysqli_fetch_assoc($result);
+                                    echo "<h3>Here is a task:</h3>";
+                                    echo "<p>" . htmlspecialchars($row['task']) . "</p>";
+                                } else {
+                                    echo "<p>No task found (ID: $id). Check database content.</p>";
+                                }
                             }
+                        }
                         ?>
                     </div>
             </section>
