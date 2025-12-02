@@ -20,22 +20,9 @@
                     <label for="strengths">What seed do you want to grow today:</label><br><br>
                     <select id="strengths" name="strengths">
                         <option value="Creativity">Creativity</option>
-                        <option value="Curiosity">Curiosity</option>
-                        <option value="Judgment">Judgment</option>
-                        <option value="Love of Learning">Love of Learning</option>
-                        <option value="Perspective">Perspective</option>
-                        <option value="Bravery">Bravery</option>
-                        <option value="Perseverance">Perseverance</option>
-                        <option value="Honesty">Honesty</option>
-                        <option value="Zest">Zest</option>
-                        <option value="Kindness">Kindness</option>
-                        <option value="Social Intelligence">Social Intelligence</option>
-                        <option value="Teamwork">Teamwork</option>
-                        <option value="Fairness">Fairness</option>
+                        <option value="Discipline">Discipline</option>
+                        <option value="Communication">Communication</option>
                         <option value="Leadership">Leadership</option>
-                        <option value="Forgiveness">Forgiveness</option>
-                        <option value="Humor">Humor</option>
-                        <option value="Spirituality">Spirituality</option>
                         <option value="unknown">I don't know yet</option>
                     </select><br><br>
                     <input type="submit" value="Grow Seed">
@@ -45,11 +32,24 @@
                 <h2>Your Selected Strengths</h2>
                     <div id="selected-strengths">
                         <?php
+                        include 'connection.php';
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $strength = $_POST['strengths'];
                             echo "<p>You want to grow <strong>" . htmlspecialchars($strength) . "</strong></p>";
-                            echo "<p>Here is a task:</p>";
+                            echo "<h3>Here is a task:</h3>";
+                            $id = rand(1, 10);
+                            if ($strength == "Leadership") {
+                                $query = "SELECT task FROM leadership WHERE id = $id";
+                            } elseif ($strength == "Creativity") {
+                                $query = "SELECT task FROM creativity WHERE id = $id";
+                            } elseif ($strength == "Discipline") {
+                                $query = "SELECT task FROM discipline WHERE id = $id";
+                            } elseif ($strength == "Communication") {
+                                $query = "SELECT task FROM communication WHERE id = $id";
+                            } 
+                            $task = mysqli_fetch_assoc($conn->query($query))['task'];
+                            echo "<p>" . htmlspecialchars($task) . "</p>";
                         }
                         ?>
                     </div>
