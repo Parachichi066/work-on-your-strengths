@@ -15,16 +15,26 @@
             <section>
                 <form target="#" action="post">
                     <label for="strengths">Select your strengths:</label><br><br>
-                    <input type="checkbox" id="creativity" name="strengths" value="Creativity">
-                    <label for="creativity"> Creativity</label><br>
-                    <input type="checkbox" id="leadership" name="strengths" value="Leadership">
-                    <label for="leadership"> Leadership</label><br>
-                    <input type="checkbox" id="empathy" name="strengths" value="Empathy">
-                    <label for="empathy"> Empathy</label><br>
-                    <input type="checkbox" id="resilience" name="strengths" value="Resilience">
-                    <label for="resilience"> Resilience</label><br>
-                    <input type="checkbox" id="communication" name="strengths" value="Communication">
-                    <label for="communication"> Communication</label><br><br>
+                    <select id="strengths" name="strengths">
+                        <option value="creativity">Creativity</option>
+                        <option value="curiosity">Curiosity</option>
+                        <option value="judgment">Judgment</option>
+                        <option value="love_of_learning">Love of Learning</option>
+                        <option value="perspective">Perspective</option>
+                        <option value="bravery">Bravery</option>
+                        <option value="perseverance">Perseverance</option>
+                        <option value="honesty">Honesty</option>
+                        <option value="zest">Zest</option>
+                        <option value="kindness">Kindness</option>
+                        <option value="social_intelligence">Social Intelligence</option>
+                        <option value="teamwork">Teamwork</option>
+                        <option value="fairness">Fairness</option>
+                        <option value="leadership">Leadership</option>
+                        <option value="forgiveness">Forgiveness</option>
+                        <option value="humor">Humor</option>
+                        <option value="spirituality">Spirituality</option>
+                        <option value="unknown">I don't know yet</option>
+                    </select><br><br>
                     <input type="submit" value="Submit">
                 </form>
             </section>
@@ -32,7 +42,15 @@
                 <h2>Your Selected Strengths</h2>
                     <div id="selected-strengths">
                         <?php
-                        
+
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            if (isset($_POST['strengths'])) {
+                                $selected_strength = htmlspecialchars($_POST['strengths']);
+                                echo "<p>You have selected: <strong>" . $selected_strength . "</strong></p>";
+                            } else {
+                                echo "<p>No strength selected.</p>";
+                            }
+                        }
                         ?>
                     </div>
             </section>
