@@ -1,0 +1,57 @@
+
+
+
+body {
+    background-color: beige;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+       /* puts the text for the banner in the centre*/
+            text-align: center; 
+            /* sets the space around the elements content*/
+            padding: 40px; 
+            /* sets the bottom border for the banner*/
+            border-bottom: 2px solid #333;
+            /* sets the background color of the banner*/
+            background-color: #356e35; 
+            /*sets banner width to 100% of its parent container*/
+            width: 100%;
+            /*ensures banner doesnt shrink below 200px allowing readability*/
+            min-width: 200px;
+            color: white;
+            box-sizing: border-box;
+}
+
+section {
+    
+width: 80%;              /* Adjust width as needed */
+  margin: 20px auto;       /* Centers the box horizontally */
+  padding: 20px;           /* Space inside the box */
+  border: 2px solid #333;  /* Box border */
+ 
+  border-radius: 8px;      /* Rounded corners */
+  background-color: #f9f9f9; /* Background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+}
+
+footer {
+      /*sets the footer background colour to black*/
+            background-color: #356e35;
+            /*sets the text colour to a soft pink shade*/
+            color:white ;
+            /*centers the text within the footer*/
+            text-align: center;
+            /*sets position to relative*/
+            position: absolute;
+            /*sticks the footer to the bottom of the viewport*/
+            bottom: 0px;
+            /*makes the footer span the full width of the viewport*/
+            width: 100%;
+            /*adds padding inside the footer for spacing*/
+            padding:  20px;
+            min-width:200px;
+            box-sizing: border-box;
+}
