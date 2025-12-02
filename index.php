@@ -44,12 +44,7 @@
                         <?php
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if (isset($_POST['strengths'])) {
-                                $selected_strength = htmlspecialchars($_POST['strengths']);
-                                echo "<p>You have selected: <strong>" . $selected_strength . "</strong></p>";
-                            } else {
-                                echo "<p>No strength selected.</p>";
-                            }
+                            
                         }
                         ?>
                     </div>
