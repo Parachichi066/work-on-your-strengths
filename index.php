@@ -28,6 +28,14 @@
                     <input type="submit" value="Submit">
                 </form>
             </section>
+            <section>
+                <h2>Your Selected Strengths</h2>
+                    <div id="selected-strengths">
+                        <?php
+                        
+                        ?>
+                    </div>
+            </section>
 
         </main>
         <footer>
