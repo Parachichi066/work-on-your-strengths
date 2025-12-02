@@ -8,6 +8,9 @@
     </head>
     <body>
         <header>
+            <div class = "image-style">
+                <img src = "logo.jpg" alt="Logo" class = "top-left-image">
+            </div>
             <h1>Welcome to Strength Garden</h1>
             <p>This is a website to cultivate your strengths. Choose the "seeds" (Strengths) that you want to work on.</p>
         </header>

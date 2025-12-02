@@ -2,7 +2,7 @@
 
 
 body {
-    background-color: beige;
+    background-color: #f5f5dc;
     margin: 0;
     padding: 0;
 }
@@ -22,6 +22,23 @@ header {
             min-width: 200px;
             color: white;
             box-sizing: border-box;
+}
+
+.top-left-image {
+            /*floats the image to the left side of its container, allowing text or other elements to wrap around it*/
+            
+            /*fixes the image height for constant vertical sizing*/
+            height: 200px;
+            /*sets the image width to 25% of its parent container making it responsive and proportionate*/
+            width: 25%;
+            /*adds rounded corners to the image*/
+            border-radius: 8px;
+        }
+
+.image-style {
+    box-sizing: border-box;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 section {
