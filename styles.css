@@ -45,7 +45,7 @@ footer {
             /*centers the text within the footer*/
             text-align: center;
             /*sets position to relative*/
-            position: absolute;
+            
             /*sticks the footer to the bottom of the viewport*/
             bottom: 0px;
             /*makes the footer span the full width of the viewport*/
