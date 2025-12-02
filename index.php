@@ -115,21 +115,17 @@
 
                             if ($query) {
                                 $result = $conn->query($query);
-                                if ($result && $result->num_rows > 0) {
-                                    $row = mysqli_fetch_assoc($result);
-                                    echo "<h3>Here is a task:</h3>";
-                                    echo "<p>" . htmlspecialchars($row['task']) . "</p>";
-                                } else {
-                                    echo "<p>No task found (ID: $id). Check database content.</p>";
+                                $row = mysqli_fetch_assoc($result);
+                                echo "<h3>Here is a task:</h3>";
+                                echo "<p>" . htmlspecialchars($row['task']) . "</p>";
                                 }
                             }
-                        }
                         ?>
                     </div>
             </section>
-
         </main>
         <footer>
             <p>&copy; 2024 Strength Garden. All rights reserved.</p>
         </footer>
+    </body>
 </html>
