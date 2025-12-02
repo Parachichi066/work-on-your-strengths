@@ -9,33 +9,33 @@
     <body>
         <header>
             <h1>Welcome to Strength Garden</h1>
-            <h3>This is a website to cultivate your strengths. Choose the "seeds" (Strengths) that you want to work on.</h3>
+            <p>This is a website to cultivate your strengths. Choose the "seeds" (Strengths) that you want to work on.</p>
         </header>
         <main>
             <section>
-                <form target="#" action="post">
-                    <label for="strengths">Select your strengths:</label><br><br>
+                <form action="#" method="post">
+                    <label for="strengths">What seed do you want to grow today:</label><br><br>
                     <select id="strengths" name="strengths">
-                        <option value="creativity">Creativity</option>
-                        <option value="curiosity">Curiosity</option>
-                        <option value="judgment">Judgment</option>
-                        <option value="love_of_learning">Love of Learning</option>
-                        <option value="perspective">Perspective</option>
-                        <option value="bravery">Bravery</option>
-                        <option value="perseverance">Perseverance</option>
-                        <option value="honesty">Honesty</option>
-                        <option value="zest">Zest</option>
-                        <option value="kindness">Kindness</option>
-                        <option value="social_intelligence">Social Intelligence</option>
-                        <option value="teamwork">Teamwork</option>
-                        <option value="fairness">Fairness</option>
-                        <option value="leadership">Leadership</option>
-                        <option value="forgiveness">Forgiveness</option>
-                        <option value="humor">Humor</option>
-                        <option value="spirituality">Spirituality</option>
+                        <option value="Creativity">Creativity</option>
+                        <option value="Curiosity">Curiosity</option>
+                        <option value="Judgment">Judgment</option>
+                        <option value="Love of Learning">Love of Learning</option>
+                        <option value="Perspective">Perspective</option>
+                        <option value="Bravery">Bravery</option>
+                        <option value="Perseverance">Perseverance</option>
+                        <option value="Honesty">Honesty</option>
+                        <option value="Zest">Zest</option>
+                        <option value="Kindness">Kindness</option>
+                        <option value="Social Intelligence">Social Intelligence</option>
+                        <option value="Teamwork">Teamwork</option>
+                        <option value="Fairness">Fairness</option>
+                        <option value="Leadership">Leadership</option>
+                        <option value="Forgiveness">Forgiveness</option>
+                        <option value="Humor">Humor</option>
+                        <option value="Spirituality">Spirituality</option>
                         <option value="unknown">I don't know yet</option>
                     </select><br><br>
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Grow Seed">
                 </form>
             </section>
             <section>
@@ -44,7 +44,9 @@
                         <?php
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            
+                            $strength = $_POST['strengths'];
+                            echo "<p>You want to grow <strong>" . htmlspecialchars($strength) . "</strong></p>";
+                            echo "<p>Here is a task:</p>";
                         }
                         ?>
                     </div>
